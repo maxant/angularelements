@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+    <style>
+        input, div { padding: 10px; }
+    </style>
+</head>
+<body onload="document.querySelector('input').focus()">
+<h1>Welcome!</h1>
+
+<input type="text" onkeyup="processChange()" placeholder="Enter your name...">
+<br>
+<div id="result"></div>
+
+<script>
+async function loadResult() {
+    let inputValue = document.querySelector("input").value.trim();      // get the text typed by the user, without leading / trailing spaces
+    if(inputValue.length > 0) {                                         // if the user typed something...
+        let response = await fetch("example/hello?name=" + inputValue); // ...send the input to your program
+        response = await response.text();                               // convert the result into text
+        let textToDisplay = "Your program said: " + response;           // enrich the result
+        document.getElementById("result").innerHTML = textToDisplay;    // put the result onto the page, in the div above
+    }
+}
+
+const processChange = _.debounce(loadResult, 300);  // "debounce" the keystrokes, so that it waits 300 milliseconds
+                                                    // before calling your program, in case the user keeps typing
+</script>
+</body>
+</html>
