@@ -8,3 +8,5 @@ See the individual readme files, in this order:
 - angular14app - an app with a dependency on the web component from the above project
 - deployedapp - an abstratium simply used for deploying the prod built code to the cloud
 
+See also https://stackoverflow.com/questions/73602649/angular-web-components-and-performance
+
