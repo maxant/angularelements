@@ -3,26 +3,26 @@ import { createCustomElement } from '@angular/elements';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { ComponentaComponent } from './componenta/componenta.component';
+import { Componenta2Component } from './componenta/componenta2.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ComponentaComponent
+    Componenta2Component
   ],
   imports: [
     BrowserModule
   ],
   providers: [],
-  bootstrap: [AppComponent, ComponentaComponent],
+  bootstrap: [AppComponent, Componenta2Component],
   entryComponents: [
-    ComponentaComponent
+    Componenta2Component
   ]
 })
 export class AppModule {
   constructor(private injector: Injector) {
-    const el = createCustomElement(ComponentaComponent, { injector });
-    customElements.define('component-a', el);
+    const el = createCustomElement(Componenta2Component, { injector });
+    customElements.define('component-a2', el);
   }
   ngDoBootstrap() {}
 }

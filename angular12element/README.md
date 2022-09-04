@@ -12,16 +12,18 @@ This is a standalone application, that contains a component which is then export
 
 It can be run with the standard `ng serve`, which will show a page with the component embedded as a normal angular component.
 
-We then build it using the standard `ng build --output-hashing none` which produces artifacts under the `dist` folder, which are then used by the custom build script to build the web component.
+We then build it using the standard `ng build --output-hashing none` which produces artifacts under the `dist` folder, which are then used by the custom build script (see below) to build the web component.
 
 We then copy that web component javascript into a second angular app that is built using a different version of angular, in order to see if angular is bootstrapped twice or just once. That is basically what we are testing here - is angular just a provided dependency, or is it included in the build of the web component?
 
-## Dependencies
+## Dependencies / Setup
 
     ng new angular12element
     cd angular12element
     ng add @angular/elements
-    
+
+For the custom build script:
+
     npm install fs-extra concat
 
     cd ..
@@ -32,13 +34,24 @@ We then copy that web component javascript into a second angular app that is bui
     ng new angular14app
     cd angular14app
 
+## Upgrading Node
+
+https://phoenixnap.com/kb/update-node-js-version -> install a program called `n` (node)
+
+    sudo npm cache clean -f
+    sudo npm install -g n
+    sudo n stable
+
+or for a specific version:
+
+    sudo n [version.number]
+
 ## Changes to a standard angular app
 
 `app.module.ts`:
 
     import { Injector, NgModule } from '@angular/core';
     import { createCustomElement } from '@angular/elements';
-    import { BrowserModule } from '@angular/platform-browser';
     .
     .
     @NgModule({
@@ -62,11 +75,11 @@ We then copy that web component javascript into a second angular app that is bui
 
 Then build the web component like this: `npm run build:elements`
 
-The results are all under the `elements` folder.
-
+This uses the custom build script `elements-build.js` to build the web components files and place them under the `elements` folder. It also copies those files over to the `angular14app` folder which is an angular app using a difference angular version, which uses the web component.
 
 
 ----
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.12.
 

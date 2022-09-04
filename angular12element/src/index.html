@@ -6,13 +6,17 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script>
+    window.start = new Date().getTime()
+    console.log("started at " + window.start)
+  </script>
 </head>
 <body>
   <app-root></app-root>
 
   <div>
     And now imported as a web component:
-    <component-a></component-a>
+    <component-a2></component-a2>
   </div>
 </body>
 </html>
