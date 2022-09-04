@@ -10,3 +10,5 @@ See the individual readme files, in this order:
 
 See also https://stackoverflow.com/questions/73602649/angular-web-components-and-performance
 
+Running example: https://public-cloud.abstratium.dev/d/ant-kutschera-gmail-comchcdg/deployedapp-jarbcajg/index.html
+
